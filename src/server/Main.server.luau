@@ -1,10 +1,5 @@
 --[[
-  游戏主要逻辑实现：
-  1、读取玩家信息
-  2、解锁关卡UI
-  3、场景传送
-  4、全球排行榜更新
-  5、......
+  游戏主要逻辑实现：玩家加入服务器和退出服务器时的处理逻辑
 ]]
 local Players = game:GetService("Players")
 
@@ -22,8 +17,6 @@ local function onPlayerAdded(player)
 
     print("Btd_" .. player.UserId,playerData)
     activePlayers["Btd_" .. player.UserId] = playerData
-  
-    -- 处理玩家事情
   else
     warn("无法加载 " .. player.Name .. " 的数据，踢出玩家")
     player:Kick("无法加载数据，请重新加入游戏")
@@ -66,3 +59,8 @@ game:BindToClose(function()
 end)
 
 -- 友情提示：在成熟游戏中，要定时对玩家数据进行保存，而不要等到玩家退出服务器时才保存数据
+
+-- 服务端解锁关卡请求
+game.ReplicatedStorage.RemoteFunction.UnlockEpisodeUI.OnServerInvoke = function(player)
+  return activePlayers["Btd_" .. player.UserId].Level
+end
