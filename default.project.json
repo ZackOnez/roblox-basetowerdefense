@@ -1,0 +1,43 @@
+{
+  "name": "roblox-basetowerdefense",
+  "tree": {
+    "$className": "DataModel",
+
+    "ReplicatedStorage": {
+      "Shared": {
+        "$path": "src/shared"
+      }
+    },
+
+    "ServerScriptService": {
+      "Server": {
+        "$path": "src/server"
+      }
+    },
+
+    "ServerStorage": {
+        "Server": {
+          "$path": "src/storage"
+        }
+    },
+
+    "StarterGui": {
+      "StarterGuiScripts": {
+        "$path": "src/client/gui"
+      }
+    },
+
+    "StarterPlayer": {
+      "StarterPlayerScripts": {
+        "Client": {
+          "$path": "src/client/player"
+        }
+      },
+      "StarterCharacterScripts": {
+        "Client": {
+          "$path": "src/client/character"
+        }
+      }
+    }
+  }
+}
