@@ -8,9 +8,9 @@ local EpisodeList = {
 
 local TeleportManager = {}
 
--- 玩家关卡传送到指定关卡
+-- 传送玩家到指定关卡
 TeleportManager.teleportToEpisode = function(player,Eid)
-  
+
 end
 
 return TeleportManager
