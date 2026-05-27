@@ -4,6 +4,7 @@
 local Players = game:GetService("Players")
 
 local DataManager = require(game.ServerScriptService.Server.Modules.DataManager)
+local TeleportManager = require(game.ServerScriptService.Server.Modules.TeleportManager)
 
 -- 当前服务器内的活跃玩家数据
 local activePlayers = {}
@@ -60,7 +61,18 @@ end)
 
 -- 友情提示：在成熟游戏中，要定时对玩家数据进行保存，而不要等到玩家退出服务器时才保存数据
 
--- 服务端解锁关卡请求
+-- 监听服务端解锁关卡请求
 game.ReplicatedStorage.RemoteFunction.UnlockEpisodeUI.OnServerInvoke = function(player)
   return activePlayers["Btd_" .. player.UserId].Level
+end
+
+-- 监听玩家传送
+game.ReplicatedStorage.RemoteFunction.TeleportToEpisode.OnServerInvoke = function(player,Eid)
+  local Level = activePlayers["Btd_" .. player.UserId].Level
+  if Level and Eid <= Level then
+    return TeleportManager.teleportToEpisode(player,Eid)
+  else
+    warn("还未解锁该关卡！")
+    return false
+  end
 end

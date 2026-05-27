@@ -18,7 +18,12 @@ local function UnlockEpisodeUI()
                 -- 绑定事件，传送至对应关卡
                 EpisodeUI.Activated:Connect(function(Eid)
                     -- 发送请求传送玩家到对应关卡
-                    
+                    local result = game.ReplicatedStorage.RemoteFunction.TeleportToEpisode:InvokeServer(Eid)
+                    if result then
+                        print("传送成功")
+                    else
+                        warn("传送失败")
+                    end
                 end)
             end
         end
