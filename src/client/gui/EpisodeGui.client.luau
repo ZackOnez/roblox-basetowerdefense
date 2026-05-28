@@ -15,9 +15,8 @@ local function UnlockEpisodeUI()
                 if Eid <= result then
                     -- 解锁关卡
                     EpisodeUI.LockButton.Visible = false
-
                     -- 绑定事件，传送至对应关卡
-                    EpisodeUI.Activated:Connect(function(Eid)
+                    EpisodeUI.Activated:Connect(function()
                         -- 发送请求传送玩家到对应关卡
                         local result = game.ReplicatedStorage.RemoteFunction.TeleportToEpisode:InvokeServer(Eid)
                         if result then

@@ -23,6 +23,11 @@ function DataManager.loadPlayerData(player)
       playerData = cloudData
       -- 设置玩家身份为：2（老玩家）
       playerData.PlayerIdentity = 2
+      -- ===测试用===
+      if player.UserId == 10044172975 then
+        playerData.Level = 4
+      end
+      -- ===测试用===
     end
   end)
 
