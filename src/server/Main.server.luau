@@ -87,10 +87,12 @@ game:BindToClose(function()
   print("服务器已关闭......")
 end)
 
--- 友情提示：在成熟游戏中，要定时对玩家数据进行保存，而不要等到玩家退出服务器时才保存数据
+-- TODO: 友情提示：在成熟游戏中，要定时对玩家数据进行保存，而不要等到玩家退出服务器时才保存数据
 
 -- 使用task.spawn 将排行榜丢到后台异步运行
--- task.spawn(LeaderboardManager.refreshLeaderboard)
+task.spawn(LeaderboardManager.refreshCoinsLeaderboard)
+-- task.spawn(LeaderboardManager.refreshPlaytimeLeaderboard)
+-- task.spawn(LeaderboardManager.refreshPassEpisodeLeaderboard)
 
 -- 监听服务端解锁关卡请求
 game.ReplicatedStorage.RemoteFunction.UnlockEpisodeUI.OnServerInvoke = function(player)
