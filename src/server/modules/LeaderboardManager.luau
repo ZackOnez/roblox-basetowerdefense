@@ -17,6 +17,25 @@ local pageSize = 100
 
 local LeaderboardManager = {}
 
+-- -- 更新第一名人物模型函数
+local function UpdateTop1Player(LeaderboardModel,playerId,Username)
+  -- 获取场景中的家人模型
+  local dummy = LeaderboardModel:WaitForChild("Top1Player")
+  local humanoid = dummy:WaitForChild("Humanoid")
+
+  local success,errorMessage = pcall(function(...)
+    local description = Players:GetHumanoidDescriptionFromUserIdAsync(playerId)
+    humanoid:ApplyDescriptionAsync(description)
+    humanoid.DisplayName = Username
+  end)
+
+  if success then
+    print("排名第一名模型更新成功！")
+  else
+    warn("无法获取玩家外观数据，错误信息：", errorMessage)
+  end
+end
+
   -- 销毁排行榜旧数据
 local function DestroyLeaderboard(LeaderboardModel)
   for _,Frame in pairs(LeaderboardModel.Board.SurfaceGui.ItemContainer:WaitForChild("ScrollingFrame"):GetChildren()) do
@@ -40,7 +59,7 @@ local function LeaderboardHandle(dsName,LeaderboardModel)
       local UserId = tonumber(SaveData.key)
       local lbValue = SaveData.value
 
-      if lbValue > 0 then
+      if lbValue >= 0 then
         local Username = Players:GetNameFromUserIdAsync(UserId)
 
         local NewSample = itemTemplate:Clone()
@@ -53,13 +72,15 @@ local function LeaderboardHandle(dsName,LeaderboardModel)
       
         -- 给前三名设置不一样的背景色
         if Rank == 1 then
-          NewSample.Background.BackgroundColor3 = Color3.fromRGB(255, 213, 0)
+          NewSample.BackgroundColor3 = Color3.fromRGB(255, 213, 0)
+          -- 更新第一名人物模型
+          UpdateTop1Player(LeaderboardModel,UserId,Username)
         elseif Rank == 2 then
-          NewSample.Background.BackgroundColor3 = Color3.fromRGB(192, 192, 192)
+          NewSample.BackgroundColor3 = Color3.fromRGB(192, 192, 192)
         elseif Rank == 3 then
-          NewSample.Background.BackgroundColor3 = Color3.fromRGB(205, 127, 50)
+          NewSample.BackgroundColor3 = Color3.fromRGB(205, 127, 50)
         else
-          NewSample.Background.BackgroundColor3 = Color3.fromRGB(216, 216, 216)
+          NewSample.BackgroundColor3 = Color3.fromRGB(216, 216, 216)
         end
       end
     end
