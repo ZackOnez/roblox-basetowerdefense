@@ -9,22 +9,24 @@ local function UnlockEpisodeUI()
     if result then
         local EpisodeUIs = EpisodeGui.EpisodeFrame.TextButton.EpisodesFrame:GetChildren()
         for _, EpisodeUI in EpisodeUIs do
-            local Eid = EpisodeUI.EpisodeID.Value
+            if EpisodeUI:IsA("ImageButton") then
+                local Eid = EpisodeUI.EpisodeID.Value
 
-            if EpisodeUI:IsA("ImageButton") and Eid <= result then
-                -- 解锁关卡
-                EpisodeUI.LockButton.Visible = false
+                if Eid <= result then
+                    -- 解锁关卡
+                    EpisodeUI.LockButton.Visible = false
 
-                -- 绑定事件，传送至对应关卡
-                EpisodeUI.Activated:Connect(function(Eid)
-                    -- 发送请求传送玩家到对应关卡
-                    local result = game.ReplicatedStorage.RemoteFunction.TeleportToEpisode:InvokeServer(Eid)
-                    if result then
-                        print("传送成功")
-                    else
-                        warn("传送失败")
-                    end
-                end)
+                    -- 绑定事件，传送至对应关卡
+                    EpisodeUI.Activated:Connect(function(Eid)
+                        -- 发送请求传送玩家到对应关卡
+                        local result = game.ReplicatedStorage.RemoteFunction.TeleportToEpisode:InvokeServer(Eid)
+                        if result then
+                            print("传送成功")
+                        else
+                            warn("传送失败")
+                        end
+                    end)
+                end
             end
         end
     else
