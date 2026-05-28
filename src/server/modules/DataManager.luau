@@ -13,7 +13,7 @@ local ords = {
   --["PassEpiDataStore"] = PassOrderedDataStore,
 }
 
-local DefaultUserData = require(game.ServerScriptService.Server.Modules.DefaultUserData)
+local DefaultUserData = require(game.ServerScriptService.Server.modules.DefaultUserData)
 -- 玩家默认数据模板
 local Template = DefaultUserData.Template
 

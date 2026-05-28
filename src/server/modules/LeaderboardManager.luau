@@ -1,11 +1,11 @@
-local DataManager = require(game.ServerScriptService.Server.Modules.DataManager)
+local DataManager = require(game.ServerScriptService.Server.modules.DataManager)
 local Players = game:GetService("Players")
 
 -- 各排行榜模型
 local Leaderboards = workspace:WaitForChild("LeaderBoards")
 local CoinsLeaderboardModel = Leaderboards:WaitForChild("CoinsLeaderboard")
-local TimeLeaderboardModel = Leaderboards:WaitForChild("TimesLeaderboard")
-local PassLeaderboardModel = Leaderboards:WaitForChild("PassLeaderboard")
+--local TimeLeaderboardModel = Leaderboards:WaitForChild("TimesLeaderboard")
+--local PassLeaderboardModel = Leaderboards:WaitForChild("PassLeaderboard")
 
 -- 排行榜模板项
 local itemTemplate = Leaderboards:WaitForChild("ItemTemplate")

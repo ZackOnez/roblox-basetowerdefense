@@ -3,9 +3,9 @@
 ]]
 local Players = game:GetService("Players")
 
-local DataManager = require(game.ServerScriptService.Server.Modules.DataManager)
-local TeleportManager = require(game.ServerScriptService.Server.Modules.TeleportManager)
-local LeaderboardManager = require(game.ServerScriptService.Server.Modules.LeaderboardManager)
+local DataManager = require(game.ServerScriptService.Server.modules.DataManager)
+local TeleportManager = require(game.ServerScriptService.Server.modules.TeleportManager)
+local LeaderboardManager = require(game.ServerScriptService.Server.modules.LeaderboardManager)
 
 -- 当前服务器内的活跃玩家数据
 local activePlayers = {}
