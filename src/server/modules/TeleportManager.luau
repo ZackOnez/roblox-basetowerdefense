@@ -1,3 +1,6 @@
+--[[
+  * 关于场景传送的各项功能 *
+]]
 local TeleportService = game:GetService("TeleportService")
 
 local EpisodeList = {

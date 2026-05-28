@@ -1,3 +1,6 @@
+--[[
+  * 关于全球排行榜的各项功能 *
+]]
 local DataManager = require(game.ServerScriptService.Server.modules.DataManager)
 local Players = game:GetService("Players")
 

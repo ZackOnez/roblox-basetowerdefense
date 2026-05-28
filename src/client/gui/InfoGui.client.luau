@@ -1,3 +1,6 @@
+--[[
+  * 玩家基本数据信息UI处理 *
+]]
 local Player = game:GetService("Players").LocalPlayer
 
 -- UI对象

@@ -1,3 +1,6 @@
+--[[
+  * 玩家默认数据模板 *
+]]
 local DefaultUserData = {}
 
 -- 玩家默认数据模板

@@ -1,3 +1,6 @@
+--[[
+  * 关卡选择传送UI处理 *
+]]
 local Player = game:GetService("Players").LocalPlayer
 
 local Door = workspace:WaitForChild("StoneGate"):WaitForChild("Door")
