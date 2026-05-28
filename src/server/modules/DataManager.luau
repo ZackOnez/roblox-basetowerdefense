@@ -2,7 +2,7 @@
   * 专门用来处理玩家数据读取与写入数据库的相关操作 *
 ]]
 local DataStoreService = game:GetService("DataStoreService")
-local playerDataStore = DataStoreService:GetDataStore("PlayerData6")
+local playerDataStore = DataStoreService:GetDataStore("PlayerData3")
 local CoinsOrderedDataStore = DataStoreService:GetOrderedDataStore("CoinsDataStore")
 --local PlaytimeOrderedDataStore = DataStoreService:GetOrderedDataStore("PlaytimeDataStore")
 --local PassOrderedDataStore = DataStoreService:GetOrderedDataStore("PassDataStore")
